@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Miziha">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2025/01/17/mysql笔记/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="MySQL语句基本运行顺序MySQL的SQL语句执行顺序大致如下：  FROM子句：确定数据来源，包括JOIN的表。 ON：执行JOIN条件。 JOIN：如果有JOIN则进行JOIN操作。 WHERE子句：执行过滤条件。 GROUP BY子句：根据指定的列分组结果集合。 HAVING子句：执行分组过滤条件。 SELECT子句：选取特定的列。 DISTINCT子句：去除重复数据。 ORDER BY子">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL基本操作">
+<meta property="og:url" content="http://example.com/2025/01/17/mysql%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="MySQL语句基本运行顺序MySQL的SQL语句执行顺序大致如下：  FROM子句：确定数据来源，包括JOIN的表。 ON：执行JOIN条件。 JOIN：如果有JOIN则进行JOIN操作。 WHERE子句：执行过滤条件。 GROUP BY子句：根据指定的列分组结果集合。 HAVING子句：执行分组过滤条件。 SELECT子句：选取特定的列。 DISTINCT子句：去除重复数据。 ORDER BY子">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/funkcpp/blog_PIC/master/1731917871853.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/funkcpp/blog_PIC/master/1731918124425.png">
+<meta property="article:published_time" content="2025-01-17T07:25:26.312Z">
+<meta property="article:modified_time" content="2025-01-17T07:25:10.549Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/funkcpp/blog_PIC/master/1731917871853.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            MySQL基本操作 -
+        
+        Math &amp; Coding
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+
+    
+        
+<script src="/js/libs/anime.min.js"></script>
+
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/miziha1.webp","dark":"/images/miziha2.webp"},"title":"Miziha's math&coding","subtitle":{"text":[],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.4","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true},"tags":{"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"}},"categories":{"Categories":{"icon":"fa-solid fa-folder","path":"/categories/"}}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/8/17 11:45:14"};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+
+    <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    <h2 class="ml13">
+        Math &amp; Coding
+    </h2>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+        var animation = anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [40,0],
+                translateZ: 0,
+                opacity: [0,1],
+                filter: ['blur(5px)', 'blur(0px)'], // Starting from blurred to unblurred
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i,
+            }).add({
+                targets: '.ml13 .letter',
+                translateY: [0,-40],
+                opacity: [1,0],
+                filter: ['blur(0px)', 'blur(5px)'], // Ending from unblurred to blurred
+                easing: "easeInExpo",
+                duration: 1200,
+                delay: (el, i) => 100 + 30 * i,
+                complete: function() {
+                    hidePreloader(); // Call hidePreloader after the animation completes
+                }
+            });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(hidePreloader, 5000); // Call hidePreloader after 5000 milliseconds if not already called by animation
+        });
+
+        function hidePreloader() {
+            var preloader = document.querySelector('.preloader');
+            preloader.style.opacity = '0';
+            setTimeout(function () {
+                preloader.style.display = 'none';
+            }, 200);
+        }
+    </script>
+</div>
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Math &amp; Coding
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">11</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">MySQL基本操作</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/redefine-avatar.svg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">Miziha</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv2</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-01-17 15:25:26</span>
+        <span class="mobile">2025-01-17 15:25:26</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-01-17 15:25:10</span>
+            <span class="mobile">2025-01-17 15:25:10</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/MySQL/">MySQL</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/MySQL/">MySQL</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h2 id="MySQL语句基本运行顺序"><a href="#MySQL语句基本运行顺序" class="headerlink" title="MySQL语句基本运行顺序"></a>MySQL语句基本运行顺序</h2><p>MySQL的SQL语句执行顺序大致如下：</p>
+<ol>
+<li>FROM子句：确定数据来源，包括JOIN的表。</li>
+<li>ON：执行JOIN条件。</li>
+<li>JOIN：如果有JOIN则进行JOIN操作。</li>
+<li>WHERE子句：执行过滤条件。</li>
+<li>GROUP BY子句：根据指定的列分组结果集合。</li>
+<li>HAVING子句：执行分组过滤条件。</li>
+<li>SELECT子句：选取特定的列。</li>
+<li>DISTINCT子句：去除重复数据。</li>
+<li>ORDER BY子句：最后对结果进行排序。</li>
+<li>LIMIT子句：限制结果集数量。</li>
+</ol>
+<h2 id="MySQL-储存数据类型"><a href="#MySQL-储存数据类型" class="headerlink" title="MySQL 储存数据类型"></a>MySQL 储存数据类型</h2><p><strong>char 和 varchar 的区别：</strong> </p>
+<ul>
+<li>‌<strong>存储长度</strong>‌：<code>char</code>是一种固定长度的数据类型，需要指定字段的长度。当存储数据时，<code>char</code>会将数据填充到指定的长度，如果数据长度小于指定长度，则使用空格进行填充。例如，<code>char(10)</code>表示该字段长度为10个字符，无论实际数据长度如何，都会占用10个字符的空间。相比之下，<code>varchar</code>是一种可变长度的数据类型，也需要指定字段的最大长度，但实际存储的数据只会占用所需的空间。例如，<code>varchar(10)</code>表示该字段最多可以存储10个字符，实际存储空间根据数据的长度变化。‌</li>
+<li>‌<strong>性能</strong>‌：由于<code>char</code>的固定长度特性，其在存储和检索过程中的性能较好，存取速度较快，但可能会浪费存储空间。<code>char</code>类型的字段在存取速度上甚至可以比<code>varchar</code>快50%。相反，<code>varchar</code>虽然存取速度较慢，但由于其长度不固定，可以节省存储空间。‌</li>
+<li>‌<strong>使用场景</strong>‌：由于<code>char</code>类型的性能较好且固定长度，适合存储长度固定的数据，如身份证号码、国家代码等。而<code>varchar</code>适合存储长度可变的数据，如姓名、地址等。</li>
+</ul>
+<h2 id="创建新数据库和删除数据库"><a href="#创建新数据库和删除数据库" class="headerlink" title="创建新数据库和删除数据库"></a>创建新数据库和删除数据库</h2><div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE `sql_tutorial`;    创建一个名称为sql_tutorial的数据库</span><br><span class="line"><span class="keyword">SHOW</span> DATABASES;                    显示所有数据库</span><br><span class="line"><span class="keyword">DROP</span> `sql_name`;                   删除名称为sql_name的数据库</span><br></pre></td></tr></table></figure></div>
+
+<p>在业务上可能更习惯于将关键字用大写字母来表示。</p>
+<h2 id="在数据库中创建表单"><a href="#在数据库中创建表单" class="headerlink" title="在数据库中创建表单"></a>在数据库中创建表单</h2><div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">USE  `sql_tutorial`;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `student`(</span><br><span class="line">	`student_id` <span class="type">INT</span>,</span><br><span class="line">    `name` <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">    `major` <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY (`student_id`)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">DESCRIBE</span> `student`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> `student`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `student` <span class="keyword">ADD</span> `gap` <span class="type">DECIMAL</span>(<span class="number">3</span>,<span class="number">2</span>);    增加gap列</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `student` <span class="keyword">DROP</span> `gap`;                删除gap列</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="JOIN-语句"><a href="#JOIN-语句" class="headerlink" title="JOIN 语句"></a>JOIN 语句</h2><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT column_name(s)</span><br><span class="line">FROM table1</span><br><span class="line">LEFT JOIN table2</span><br><span class="line">ON table1.column_name=table2.column_name;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>用 <code>JOIN</code> 语句的时候有几个注意点：</p>
+<p><strong>使用<code>LEFT JOIN</code> 和 <code>RIGHT JOIN</code></strong> ：使用这两个语句时通常会有如下结构</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FROM A</span><br><span class="line">...</span><br><span class="line">LEFT JOIN B</span><br></pre></td></tr></table></figure></div>
+
+<p>这会表示<code>JOIN</code> 后 A表在B表左边，注意 <code>JOIN</code> 字段并不会生成一个物理上的新表，而是虚拟表。若需要查询 <code>JOIN</code> 后的列信息需要带上，为了避免混淆，需要带上原表的名称进行查询，例如 <code>table1_name.column_name</code> 。对于 <code>LEFT JOIN</code> 来说会保留左表的所有信息，使得右表数值去匹配左表。若右表数值在左表中是缺失的，则会匹配到 <code>null</code> ，若右表数值相对于左表数值而言并不是 1-1 的，则会增加左表数值使之匹配右表。例如</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://raw.githubusercontent.com/funkcpp/blog_PIC/master/1731917871853.png"> </p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://raw.githubusercontent.com/funkcpp/blog_PIC/master/1731918124425.png"></p>
+<h2 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h2><p>​	<strong>GROUP BY</strong> 经常为将表中数据进行分组的操作，具体而言</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT *</span><br><span class="line">FROM table_name</span><br><span class="line">GROUP BY col_name</span><br></pre></td></tr></table></figure></div>
+
+<p>这段 SQL 语句就是将表中的数据按照列<code>col_name</code>进行分组操作。</p>
+<p>​	在实际过程中常常要根据多列来进行分组，例如在对数据集做聚合函数处理时，一个常用的解决办法就是在<code>GROUP BY</code>后面将你需要分组的多列用逗号链接，例如</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT *</span><br><span class="line">FROM table_name</span><br><span class="line">GROUP BY col_name_1,col_name_2</span><br></pre></td></tr></table></figure></div>
+
+<p>在这里数据集就会根据<code>col_name_1</code>,<code>col_name_2</code>来进行分组操作。</p>
+<p><strong>remark1：</strong> 当SQL语句中没有聚合函数时，若使用<code>GROUP BY</code>,则操作的表会返回分组后的第一条数据，例如</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Delivery 表：</span><br><span class="line">+-------------+-------------+------------+-----------------------------+</span><br><span class="line">| delivery_id | customer_id | order_date | customer_pref_delivery_date |</span><br><span class="line">+-------------+-------------+------------+-----------------------------+</span><br><span class="line">| 1           | 1           | 2019-08-01 | 2019-08-02                  |</span><br><span class="line">| 2           | 2           | 2019-08-02 | 2019-08-02                  |</span><br><span class="line">| 3           | 1           | 2019-08-11 | 2019-08-12                  |</span><br><span class="line">| 4           | 3           | 2019-08-24 | 2019-08-24                  |</span><br><span class="line">| 5           | 3           | 2019-08-21 | 2019-08-22                  |</span><br><span class="line">| 6           | 2           | 2019-08-11 | 2019-08-13                  |</span><br><span class="line">| 7           | 4           | 2019-08-09 | 2019-08-09                  |</span><br><span class="line">+-------------+-------------+------------+-----------------------------+</span><br></pre></td></tr></table></figure></div>
+
+<p>对于该表使用下述的SQL语句</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line">WITH T AS(</span><br><span class="line">    SELECT customer_id,order_date,customer_pref_delivery_date</span><br><span class="line">    FROM Delivery</span><br><span class="line">    GROUP BY customer_id</span><br><span class="line">    ORDER BY order_date</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">SELECT *</span><br><span class="line">FROM T</span><br></pre></td></tr></table></figure></div>
+
+<p>由于在建立虚表的时候，我们并没有用到聚合函数，但是仍然使用了<code>GROUP BY</code>则此时虚表会返回给由分组后的每组第一条数据所构成的表</p>
+<table>
+<thead>
+<tr>
+<th>customer_id</th>
+<th>order_date</th>
+<th>customer_pref_delivery_date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>2019-08-01</td>
+<td>2019-08-02</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2019-08-02</td>
+<td>2019-08-02</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2019-08-09</td>
+<td>2019-08-09</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2019-08-24</td>
+<td>2019-08-24</td>
+</tr>
+</tbody></table>
+<h2 id="虚表（WITH）"><a href="#虚表（WITH）" class="headerlink" title="虚表（WITH）"></a>虚表（WITH）</h2><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">WITH T AS(</span><br><span class="line">	SELECT ...</span><br><span class="line">	FROM ...</span><br><span class="line">	WHERE ...</span><br><span class="line">	GROUP BY...</span><br><span class="line">	ORDER BY...</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+
+<p>对于一些比较棘手的查询数据的情况，我们可以采用<code>WITH</code> 语句来进行构建一个虚表，进而后续可以用虚表来进行数据调用的工作。</p>
+<p>譬如说要进行如下操作</p>
+<h3 id="例"><a href="#例" class="headerlink" title="例"></a>例</h3><p><code>Customer</code> 表：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| customer_id | int     |</span><br><span class="line">| product_key | int     |</span><br><span class="line">+-------------+---------+</span><br><span class="line">该表可能包含重复的行。</span><br><span class="line">customer_id 不为 NULL。</span><br><span class="line">product_key 是 Product 表的外键(reference 列)。</span><br></pre></td></tr></table></figure></div>
+
+<p><code>Product</code> 表：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| product_key | int     |</span><br><span class="line">+-------------+---------+</span><br><span class="line">product_key 是这张表的主键（具有唯一值的列）。</span><br></pre></td></tr></table></figure></div>
+
+<p>编写解决方案，报告 <code>Customer</code> 表中购买了 <code>Product</code> 表中所有产品的客户的 id。</p>
+<p>返回结果表 <strong>无顺序要求</strong> 。</p>
+<p>返回结果格式如下所示。</p>
+<p><strong>示例 1：</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">Customer 表：</span><br><span class="line">+-------------+-------------+</span><br><span class="line">| customer_id | product_key |</span><br><span class="line">+-------------+-------------+</span><br><span class="line">| 1           | 5           |</span><br><span class="line">| 2           | 6           |</span><br><span class="line">| 3           | 5           |</span><br><span class="line">| 3           | 6           |</span><br><span class="line">| 1           | 6           |</span><br><span class="line">+-------------+-------------+</span><br><span class="line">Product 表：</span><br><span class="line">+-------------+</span><br><span class="line">| product_key |</span><br><span class="line">+-------------+</span><br><span class="line">| 5           |</span><br><span class="line">| 6           |</span><br><span class="line">+-------------+</span><br><span class="line">输出：</span><br><span class="line">+-------------+</span><br><span class="line">| customer_id |</span><br><span class="line">+-------------+</span><br><span class="line">| 1           |</span><br><span class="line">| 3           |</span><br><span class="line">+-------------+</span><br><span class="line">解释：</span><br><span class="line">购买了所有产品（5 和 6）的客户的 id 是 1 和 3 。</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>我的Mysql语句就会写成如下形式</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line">WITH T AS(</span><br><span class="line">    SELECT customer_id,</span><br><span class="line">    COUNT( DISTINCT product_key) AS c </span><br><span class="line">    FROM Customer </span><br><span class="line">    GROUP BY customer_id</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SELECT customer_id</span><br><span class="line">FROM T</span><br><span class="line">WHERE `T`.c = (SELECT COUNT(DISTINCT product_key) FROM Product)</span><br></pre></td></tr></table></figure></div>
+
+<p>当然，如果不喜欢使用虚表，可以将虚表改为嵌套表的形式，如下所示</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT customer_id</span><br><span class="line">FROM (</span><br><span class="line">    SELECT customer_id,</span><br><span class="line">    COUNT( DISTINCT product_key) AS c </span><br><span class="line">    FROM Customer </span><br><span class="line">    GROUP BY customer_id</span><br><span class="line">) T</span><br><span class="line">WHERE `T`.c = (SELECT COUNT(DISTINCT product_key) FROM Product)</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h2 id="MySQL-常见函数的使用方法"><a href="#MySQL-常见函数的使用方法" class="headerlink" title="MySQL 常见函数的使用方法"></a>MySQL 常见函数的使用方法</h2><h3 id="IF-语句"><a href="#IF-语句" class="headerlink" title="IF 语句"></a>IF 语句</h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IF(CONDITION 这里是要输入你的判断语句,TRUE_VALUE 如果判断成为TRUE,则输出的值, FALSE_VALUE 如果判断失败输出的值)</span><br></pre></td></tr></table></figure></div>
+
+<p>例如有如下的需求</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT IF(age &gt;= 18, 'Adult', 'Minor') AS age_group</span><br><span class="line">FROM users;</span><br></pre></td></tr></table></figure></div>
+
+<p>This query checks if a user is 18 years old or older and categorizes them as ‘Adult’ or ‘Minor’ accordingly.</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT </span><br><span class="line">    Signups.user_id,</span><br><span class="line">    IF(C.confirmation_rate IS NULL, 0.00, C.confirmation_rate) AS confirmation_rate</span><br><span class="line">FROM Signups</span><br><span class="line">LEFT JOIN C</span><br><span class="line">    ON Signups.user_id = C.user_id;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IF(col.condition , true_val , col)</span><br></pre></td></tr></table></figure></div>
+
+<p>在上述SQL语句中的<code>IF</code>语句中有如上结构，则表示如果满足条件，将值改成<code>true_val</code>，若是<code>False</code>则不变。</p>
+<h3 id="CASE-语句"><a href="#CASE-语句" class="headerlink" title="CASE 语句"></a>CASE 语句</h3><h3 id="CASE-语句的结构："><a href="#CASE-语句的结构：" class="headerlink" title="CASE 语句的结构："></a><code>CASE</code> 语句的结构：</h3><p><code>CASE</code> 语句用于在查询中进行条件判断，根据不同的条件返回不同的值。<code>END</code> 是 <code>CASE</code> 语句的结束标志，而 <code>AS</code> 用来给返回的结果列命名。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT </span><br><span class="line">    CASE</span><br><span class="line">        WHEN condition THEN result1</span><br><span class="line">        WHEN condition THEN result2</span><br><span class="line">        ELSE result3</span><br><span class="line">    END AS alias_name</span><br><span class="line">FROM table_name;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="END-AS-的作用："><a href="#END-AS-的作用：" class="headerlink" title="END AS 的作用："></a><code>END AS</code> 的作用：</h3><ul>
+<li><strong><code>END</code></strong>: 用于标识 <code>CASE</code> 语句的结束，告诉 SQL 引擎该语句已经完成并准备返回一个结果。</li>
+<li><strong><code>AS</code></strong>: 用来给 <code>CASE</code> 语句的返回结果列起一个别名，这样在结果集中可以以更易读的方式引用该列。</li>
+</ul>
+<h2 id="MySQL-关于时间数据常用的处理函数"><a href="#MySQL-关于时间数据常用的处理函数" class="headerlink" title="MySQL 关于时间数据常用的处理函数"></a>MySQL 关于时间数据常用的处理函数</h2><ul>
+<li>计算两个时间数据的差值 DATEDIFF(DATA_1,DATA_2)</li>
+<li></li>
+</ul>
+<h2 id="MySQL窗口函数"><a href="#MySQL窗口函数" class="headerlink" title="MySQL窗口函数"></a>MySQL窗口函数</h2><h3 id="ROW-NUMBER"><a href="#ROW-NUMBER" class="headerlink" title="ROW_NUMBER()"></a>ROW_NUMBER()</h3>
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> MySQL基本操作</li>
+        <li><strong>Author:</strong> Miziha</li>
+        <li><strong>Created at
+                :</strong> 2025-01-17 15:25:26</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2025-01-17 15:25:10
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://redefine.ohevan.com/2025/01/17/mysql笔记/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/MySQL/">#MySQL</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2025/01/09/%E5%85%B3%E4%BA%8E%E5%AD%97%E5%85%B8%E7%9A%84%E5%87%A0%E7%A7%8D%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">关于字典的几种遍历方法</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">MySQL基本操作</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E8%AF%AD%E5%8F%A5%E5%9F%BA%E6%9C%AC%E8%BF%90%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="nav-text">MySQL语句基本运行顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL-%E5%82%A8%E5%AD%98%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">MySQL 储存数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">创建新数据库和删除数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E5%88%9B%E5%BB%BA%E8%A1%A8%E5%8D%95"><span class="nav-text">在数据库中创建表单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JOIN-%E8%AF%AD%E5%8F%A5"><span class="nav-text">JOIN 语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GROUP-BY"><span class="nav-text">GROUP BY</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%99%9A%E8%A1%A8%EF%BC%88WITH%EF%BC%89"><span class="nav-text">虚表（WITH）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B"><span class="nav-text">例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL-%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-text">MySQL 常见函数的使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IF-%E8%AF%AD%E5%8F%A5"><span class="nav-text">IF 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CASE-%E8%AF%AD%E5%8F%A5"><span class="nav-text">CASE 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CASE-%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%BB%93%E6%9E%84%EF%BC%9A"><span class="nav-text">CASE 语句的结构：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#END-AS-%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%9A"><span class="nav-text">END AS 的作用：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL-%E5%85%B3%E4%BA%8E%E6%97%B6%E9%97%B4%E6%95%B0%E6%8D%AE%E5%B8%B8%E7%94%A8%E7%9A%84%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="nav-text">MySQL 关于时间数据常用的处理函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="nav-text">MySQL窗口函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ROW-NUMBER"><span class="nav-text">ROW_NUMBER()</span></a></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Miziha</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        11 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.4</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>
