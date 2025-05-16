@@ -468,15 +468,15 @@ mjx-container[display="true"] + br {
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">13</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">14</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -607,7 +607,7 @@ mjx-container[display="true"] + br {
 <h2 id="创建新数据库和删除数据库"><a href="#创建新数据库和删除数据库" class="headerlink" title="创建新数据库和删除数据库"></a>创建新数据库和删除数据库</h2><div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE `sql_tutorial`;    创建一个名称为sql_tutorial的数据库</span><br><span class="line"><span class="keyword">SHOW</span> DATABASES;                    显示所有数据库</span><br><span class="line"><span class="keyword">DROP</span> `sql_name`;                   删除名称为sql_name的数据库</span><br></pre></td></tr></table></figure></div>
 
 <p>在业务上可能更习惯于将关键字用大写字母来表示。</p>
-<h2 id="在数据库中创建表单"><a href="#在数据库中创建表单" class="headerlink" title="在数据库中创建表单"></a>在数据库中创建表单</h2><div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">USE  `sql_tutorial`;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `student`(</span><br><span class="line">	`student_id` <span class="type">INT</span>,</span><br><span class="line">    `name` <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">    `major` <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY (`student_id`)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">DESCRIBE</span> `student`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> `student`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `student` <span class="keyword">ADD</span> `gap` <span class="type">DECIMAL</span>(<span class="number">3</span>,<span class="number">2</span>);    增加gap列</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `student` <span class="keyword">DROP</span> `gap`;                删除gap列</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<h2 id="在数据库中创建表单"><a href="#在数据库中创建表单" class="headerlink" title="在数据库中创建表单"></a>在数据库中创建表单</h2><div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">USE  `sql_tutorial`;</span><br><span class="line"><span class="keyword">CREATE TABLE</span> `student`(</span><br><span class="line">	`student_id` <span class="type">INT</span>,</span><br><span class="line">    `name` <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">    `major` <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">    <span class="keyword">PRIMARY KEY</span> (`student_id`)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">DESCRIBE</span> `student`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> `student`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER TABLE</span> `student` <span class="keyword">ADD</span> `gap` <span class="type">DECIMAL</span>(<span class="number">3</span>,<span class="number">2</span>);    增加gap列</span><br><span class="line"><span class="keyword">ALTER TABLE</span> `student` <span class="keyword">DROP</span> `gap`;                删除gap列</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
 
 
 
@@ -885,7 +885,7 @@ mjx-container[display="true"] + br {
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        13 posts in total
+                        14 posts in total
                     </span>
                     
                 </p>
